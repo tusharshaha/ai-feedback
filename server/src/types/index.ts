@@ -2,9 +2,14 @@ import { z } from "zod";
 
 export const feedbackSchema = z.object({
   type: z.enum(["bug", "idea", "other"]),
-  subject: z.string().min(10, {
-    message: "Subject must be at least 10 characters.",
-  }),
+  subject: z
+    .string()
+    .min(10, {
+      message: "Subject must be at least 10 characters.",
+    })
+    .max(200, {
+      message: "Subject must not be longer than 200 characters.",
+    }),
   feedback: z
     .string()
     .min(20, {

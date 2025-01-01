@@ -16,7 +16,10 @@ const feedbackSchema = new mongoose.Schema(
       type: String,
       required: [true, "Subject can't be empty!"],
     },
-    feedback: String,
+    feedback: {
+      type: String,
+      required: [true, "Feedback can't be empty!"],
+    },
   },
   { timestamps: true }
 );
