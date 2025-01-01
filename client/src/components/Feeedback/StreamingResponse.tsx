@@ -1,6 +1,6 @@
-"use client" 
+'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 type StreamingResponseProps = {
   response: string;
@@ -9,15 +9,15 @@ type StreamingResponseProps = {
 
 const StreamingResponse: React.FC<StreamingResponseProps> = ({
   response,
-  typingSpeed = 50, // Default typing speed
+  typingSpeed = 50 // Default typing speed
 }) => {
-  const [displayedText, setDisplayedText] = useState("");
+  const [displayedText, setDisplayedText] = useState('');
 
   useEffect(() => {
     let currentIndex = 0;
 
     const interval = setInterval(() => {
-      if (currentIndex < response?.length) {
+      if (currentIndex < response?.length - 1) {
         setDisplayedText((prev) => prev + response[currentIndex]);
         currentIndex++;
       } else {
