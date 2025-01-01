@@ -17,7 +17,7 @@ const StreamingResponse: React.FC<StreamingResponseProps> = ({
     let currentIndex = 0;
 
     const interval = setInterval(() => {
-      if (currentIndex < response.length) {
+      if (currentIndex < response?.length) {
         setDisplayedText((prev) => prev + response[currentIndex]);
         currentIndex++;
       } else {
