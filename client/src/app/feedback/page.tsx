@@ -17,6 +17,7 @@ async function getFeedback() {
 
 const Feedback = async () => {
   const data = await getFeedback();
+  console.log(data)
   return (
     <div className="min-h-screen cus-container py-8 text-right">
       <Link href="/" className="ghost-btn">
