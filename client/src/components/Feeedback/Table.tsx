@@ -7,6 +7,7 @@ import { Button } from '../ui/button';
 import { Trash2 } from 'lucide-react';
 
 type Feedback = {
+  id: string
   type: string;
   subject: string;
   status: string;
@@ -18,7 +19,7 @@ async function getFeedback() {
   try {
     const res = await fetch(
       `${NEXT_PUBLIC_BACKEND_URL}/feedback?limit=15&skip=0`,
-      { next: { revalidate: 10 } }
+      { cache: "no-store" }
     );
     const data = await res.json();
     return data.data;
@@ -88,7 +89,7 @@ const Table = async () => {
                     subject={item.subject}
                     feedback={item.feedback}
                   />
-                  <Button variant="outline" size="icon">
+                  <Button variant="destructive" size="icon">
                     <Trash2 />
                   </Button>
                 </td>
