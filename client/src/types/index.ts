@@ -19,3 +19,5 @@ export const feedbackFormSchema = z.object({
       message: 'Feedback must not be longer than 1000 characters.'
     })
 });
+
+export type FormType = z.infer<typeof feedbackFormSchema>;

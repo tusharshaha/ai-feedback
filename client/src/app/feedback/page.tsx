@@ -1,4 +1,4 @@
-import Table from '@/components/Table';
+import Table from '@/components/Feeedback/Table';
 import { NEXT_PUBLIC_BACKEND_URL } from '@/config';
 import Link from 'next/link';
 import React from 'react';

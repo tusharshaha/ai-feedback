@@ -1,4 +1,6 @@
 import React from 'react';
+import FeedbackModal from './FeedbackModal';
+import { formatDate } from '@/lib/formatDate';
 
 type TableProps = {
   type: string;
@@ -14,7 +16,7 @@ const Table = ({ data }: { data: TableProps[] }) => {
       <table className="min-w-full border-collapse border border-gray-200 bg-white text-center">
         {/* Table Head */}
         <thead>
-          <tr className="bg-slate-600 text-white [&>*]:border [&>*]:border-white">
+          <tr className="bg-slate-600 text-white [&>*]:border">
             <th>Type</th>
             <th>Date</th>
             <th>Status</th>
@@ -33,14 +35,14 @@ const Table = ({ data }: { data: TableProps[] }) => {
           )}
           {data?.map((item, index) => (
             <tr key={index} className="">
-              <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
+              <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700 capitalize">
                 {item.type}
               </td>
               <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                {item.createdAt}
+                {formatDate(item.createdAt)}
               </td>
               <td
-                className={`px-4 py-2 border border-gray-300 text-sm font-medium ${
+                className={`px-4 py-2 border border-gray-300 text-sm capitalize font-bold ${
                   item.status === 'Completed'
                     ? 'text-green-600'
                     : 'text-yellow-600'
@@ -49,10 +51,15 @@ const Table = ({ data }: { data: TableProps[] }) => {
                 {item.status}
               </td>
               <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                {item.subject}
+                <p className="text-ellipsis overflow-hidden whitespace-nowrap w-[150px] mx-auto">
+                  {item.subject}
+                </p>
               </td>
               <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                feedback
+                <FeedbackModal
+                  subject={item.subject}
+                  feedback={item.feedback}
+                />
               </td>
             </tr>
           ))}
