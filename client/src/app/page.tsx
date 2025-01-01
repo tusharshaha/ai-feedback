@@ -1,8 +1,14 @@
+import FeedbackForm from '@/components/Feeedback/FeedbackForm';
+
+import Link from 'next/link';
+
 export default function Home() {
-  return ( 
-    <div>
-      <h1>Next.js boilerplate</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis inventore voluptas possimus omnis deleniti, veniam corrupti officiis. Repellat facilis ex adipisci cumque veritatis ad! Illum alias sit excepturi consequuntur in!</p>
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center cus-container py-8">
+      <Link href="/feedback" className="ghost-btn ml-auto">
+        All Feedback &#8594;
+      </Link>
+      <FeedbackForm />
     </div>
   );
 }
