@@ -23,7 +23,7 @@ const Feedback = async () => {
         Back to Home &#8594;
       </Link>
 
-      <Table data={data.data} />
+      {/* <Table data={data.data} /> */}
     </div>
   );
 };
