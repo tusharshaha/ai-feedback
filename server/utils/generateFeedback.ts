@@ -13,9 +13,11 @@ export default async function generateFeedbackSoution({
       model: "gpt-4o",
       messages: [
         {
-          role: "assistant",
-          content: prompt,
+          role: "system",
+          content:
+            "You are a highly skilled software assistant specializing in analyzing bug reports and providing effective, concise solutions.",
         },
+        { role: "user", content: prompt },
       ],
     });
     return completion.choices[0]?.message.content;
