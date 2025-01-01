@@ -25,6 +25,7 @@ import { feedbackFormSchema } from '@/types';
 import { Loader2 } from 'lucide-react';
 import { Textarea } from './ui/textarea';
 import { Input } from './ui/input';
+import { NEXT_PUBLIC_BACKEND_URL } from '@/config';
 
 const FeedbackForm = () => {
   const [isLoading, startTransition] = useTransition();
@@ -34,12 +35,26 @@ const FeedbackForm = () => {
 
   const form = useForm<z.infer<typeof feedbackFormSchema>>({
     resolver: zodResolver(feedbackFormSchema),
-    defaultValues: {}
+    defaultValues: {
+      subject: ''
+    }
   });
 
   function onSubmit(values: z.infer<typeof feedbackFormSchema>) {
     startTransition(async () => {
       try {
+        const res = await fetch(`${NEXT_PUBLIC_BACKEND_URL}/feedback`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(values)
+        });
+        const data = await res.json();
+        form.reset({
+          subject: "",
+          feedback: "",
+          type: "bug"
+        });
+        console.log(data);
       } catch {
         toast.error('Something went wrong! try again.');
       }
