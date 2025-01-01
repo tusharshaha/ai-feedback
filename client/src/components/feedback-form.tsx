@@ -36,7 +36,9 @@ const FeedbackForm = () => {
   const form = useForm<z.infer<typeof feedbackFormSchema>>({
     resolver: zodResolver(feedbackFormSchema),
     defaultValues: {
-      subject: ''
+      subject: '',
+      feedback: "",
+      type: "bug"
     }
   });
 
@@ -52,7 +54,7 @@ const FeedbackForm = () => {
         form.reset({
           subject: "",
           feedback: "",
-          type: "bug"
+          type:"bug"
         });
         console.log(data);
       } catch {
@@ -74,7 +76,7 @@ const FeedbackForm = () => {
               <FormItem>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  value={field.value}
                 >
                   <FormControl>
                     <SelectTrigger>
