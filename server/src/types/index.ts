@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const feedbackFormSchema = z.object({
+export const feedbackSchema = z.object({
   type: z.enum(["bug", "idea", "other"]),
   subject: z.string().min(10, {
     message: "Subject must be at least 10 characters.",
@@ -15,4 +15,4 @@ export const feedbackFormSchema = z.object({
     }),
 });
 
-export type FeedbackTypes = z.infer<typeof feedbackFormSchema>;
+export type FeedbackTypes = z.infer<typeof feedbackSchema>;

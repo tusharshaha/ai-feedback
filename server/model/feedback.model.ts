@@ -7,6 +7,11 @@ const feedbackSchema = new mongoose.Schema(
       enum: ["bug", "idea", "other"],
       required: [true, "Type is Required"],
     },
+    status: {
+      type: String,
+      enum: ["pending", "solved"],
+      default: "pending"
+    },
     subject: {
       type: String,
       required: [true, "Subject can't be empty!"],

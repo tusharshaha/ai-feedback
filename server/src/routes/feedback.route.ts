@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getFeedback } from "../controller/feedback.controller";
+import { getAllFeedback, getFeedback } from "../controller/feedback.controller";
 
 const router = Router();
 
-router.route("/").post(getFeedback);
+router.route("/").get(getAllFeedback).post(getFeedback);
 
 export default router;
