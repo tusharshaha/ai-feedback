@@ -26,7 +26,7 @@ const Table = ({ data }: { data: TableProps[] }) => {
         </thead>
         {/* Table Body */}
         <tbody>
-          {data.length === 0 && (
+          {data?.length === 0 && (
             <tr className="[&>*]:border">
               <td colSpan={5} className="py-5 text-center">
                 <p className="mb-0">No Feedback Available</p>
