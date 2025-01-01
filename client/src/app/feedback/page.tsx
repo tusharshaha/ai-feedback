@@ -6,7 +6,8 @@ import React from 'react';
 async function getFeedback() {
   try {
     const res = await fetch(
-      `${NEXT_PUBLIC_BACKEND_URL}/feedback?limit=15&skip=0`
+      `${NEXT_PUBLIC_BACKEND_URL}/feedback?limit=15&skip=0`,
+      { next: { revalidate: 10 } }
     );
     const data = await res.json();
     return data;
