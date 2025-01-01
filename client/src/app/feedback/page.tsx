@@ -1,4 +1,4 @@
-// import Table from '@/components/Feeedback/Table';
+import Table from '@/components/Feeedback/Table';
 import { NEXT_PUBLIC_BACKEND_URL } from '@/config';
 import Link from 'next/link';
 import React from 'react';
@@ -17,14 +17,13 @@ async function getFeedback() {
 
 const Feedback = async () => {
   const data = await getFeedback();
-  console.log(data)
   return (
     <div className="min-h-screen cus-container py-8 text-right">
       <Link href="/" className="ghost-btn">
         Back to Home &#8594;
       </Link>
 
-      {/* <Table data={data.data} /> */}
+      <Table data={data?.data} />
     </div>
   );
 };
