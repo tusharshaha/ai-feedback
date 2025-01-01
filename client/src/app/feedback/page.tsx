@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const Feedback = async () => {
-  const res = await fetch(`${NEXT_PUBLIC_BACKEND_URL}/feedback`);
+  const res = await fetch(`${NEXT_PUBLIC_BACKEND_URL}/feedback?limit=15&skip=0`);
   const data = await res.json();
   return (
     <div className='min-h-screen cus-container py-8 text-right'>

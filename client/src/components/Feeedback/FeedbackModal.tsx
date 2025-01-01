@@ -25,7 +25,7 @@ const FeedbackModal = ({ feedback, subject }: ModalProps) => {
           <Eye />
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-[300px] max-h-[400px] overflow-y-auto sm:w-[525px] sm:h-auto">
+      <DialogContent className="w-80 sm:w-[525px]">
         <DialogHeader>
           <DialogTitle>Feedback</DialogTitle>
           <DialogDescription className="hidden"></DialogDescription>
@@ -37,7 +37,7 @@ const FeedbackModal = ({ feedback, subject }: ModalProps) => {
           </div>
           <div>
             <p>Description</p>
-            <div className="py-2 px-3 border rounded-md text-xs">
+            <div className="py-2 px-3 border rounded-md text-xs max-h-[200px] overflow-y-auto">
               <OrderedList response={feedback} />
             </div>
           </div>
