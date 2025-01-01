@@ -23,8 +23,11 @@ export async function getFeedback(
     const aiFeedback = await getAIFeedback(feedback);
     res.status(200).json({
       success: true,
-      data: aiFeedback
-    })
+      data: {
+        subject: feedback.subject,
+        solution: aiFeedback,
+      },
+    });
   } catch (error) {
     next(error);
   }
