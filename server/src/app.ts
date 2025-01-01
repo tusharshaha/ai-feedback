@@ -6,13 +6,14 @@ import morgan from "morgan";
 // routes
 import feedbackRoute from "./routes/feedback.route";
 import handleError from "./middleware/error-handler";
+import { FRONTEND_URL } from "./configs";
 
 const app = express();
 
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: FRONTEND_URL,
     methods: "GET,PATCH,POST,DELETE,OPTIONS",
     credentials: true,
   })
