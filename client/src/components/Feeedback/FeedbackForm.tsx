@@ -60,6 +60,7 @@ const FeedbackForm = () => {
         if (data.success && data.data) {
           setData(data.data);
         }
+        toast.success(data.message);
       } catch {
         toast.error('Something went wrong! try again.');
       }

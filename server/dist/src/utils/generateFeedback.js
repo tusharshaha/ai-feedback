@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = generateFeedbackSoution;
-var openai_config_1 = __importDefault(require("../src/configs/openai.config"));
+var openai_config_1 = __importDefault(require("../configs/openai.config"));
 function generateFeedbackSoution(_a) {
     return __awaiter(this, arguments, void 0, function (_b) {
         var prompt, completion, error_1;
@@ -50,7 +50,7 @@ function generateFeedbackSoution(_a) {
             switch (_d.label) {
                 case 0:
                     _d.trys.push([0, 2, , 3]);
-                    prompt = "Provide a solution for the following feedback. Type: ".concat(type, ". Subject: ").concat(subject, ". Feedback: ").concat(feedback, ". Keep the response concise and clear. Ensure each sentence is no longer than 100 characters and avoid using quotation marks within sentences. dont use any text formatting.");
+                    prompt = "Provide a solution for the following feedback. Type: ".concat(type, ". Subject: ").concat(subject, ". Feedback: ").concat(feedback, ". Keep the response concise and clear. Ensure each sentence is no longer than 200 characters and avoid using quotation marks within sentences. dont use any text formatting.");
                     return [4 /*yield*/, openai_config_1.default.chat.completions.create({
                             model: "gpt-4o",
                             messages: [

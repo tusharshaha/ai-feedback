@@ -1,4 +1,4 @@
-import generateFeedbackSoution from "../../utils/generateFeedback"
+import generateFeedbackSoution from "../utils/generateFeedback"
 import {  FeedbackTypes } from "../types"
 
 export async function getAIFeedback(feedback: FeedbackTypes) {

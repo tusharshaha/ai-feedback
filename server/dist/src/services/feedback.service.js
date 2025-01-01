@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAIFeedback = getAIFeedback;
-var generateFeedback_1 = __importDefault(require("../../utils/generateFeedback"));
+var generateFeedback_1 = __importDefault(require("../utils/generateFeedback"));
 function getAIFeedback(feedback) {
     return __awaiter(this, void 0, void 0, function () {
         var generatedFeedback;
