@@ -26,43 +26,44 @@ const Table = ({ data }: { data: TableProps[] }) => {
         </thead>
         {/* Table Body */}
         <tbody>
-          {data?.length === 0 && (
+          {data?.length === 0 ? (
             <tr className="[&>*]:border">
               <td colSpan={5} className="py-5 text-center">
                 <p className="mb-0">No Feedback Available</p>
               </td>
             </tr>
+          ) : (
+            data?.map((item, index) => (
+              <tr key={index} className="">
+                <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700 capitalize">
+                  {item.type}
+                </td>
+                <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
+                  {formatDate(item.createdAt)}
+                </td>
+                <td
+                  className={`px-4 py-2 border border-gray-300 text-sm capitalize font-bold ${
+                    item.status === 'Completed'
+                      ? 'text-green-600'
+                      : 'text-yellow-600'
+                  }`}
+                >
+                  {item.status}
+                </td>
+                <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
+                  <p className="text-ellipsis overflow-hidden whitespace-nowrap w-[150px] mx-auto">
+                    {item.subject}
+                  </p>
+                </td>
+                <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
+                  <FeedbackModal
+                    subject={item.subject}
+                    feedback={item.feedback}
+                  />
+                </td>
+              </tr>
+            ))
           )}
-          {data?.map((item, index) => (
-            <tr key={index} className="">
-              <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700 capitalize">
-                {item.type}
-              </td>
-              <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                {formatDate(item.createdAt)}
-              </td>
-              <td
-                className={`px-4 py-2 border border-gray-300 text-sm capitalize font-bold ${
-                  item.status === 'Completed'
-                    ? 'text-green-600'
-                    : 'text-yellow-600'
-                }`}
-              >
-                {item.status}
-              </td>
-              <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                <p className="text-ellipsis overflow-hidden whitespace-nowrap w-[150px] mx-auto">
-                  {item.subject}
-                </p>
-              </td>
-              <td className="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                <FeedbackModal
-                  subject={item.subject}
-                  feedback={item.feedback}
-                />
-              </td>
-            </tr>
-          ))}
         </tbody>
       </table>
     </div>
