@@ -1,14 +1,14 @@
 import openai from "../src/configs/openai.config";
+import { FeedbackTypes } from "../src/types";
 
-async function generateArticle({
+export default async function generateFeedbackSoution({
   type,
+  subject,
   feedback,
-}: {
-  type: string;
-  feedback: string;
-}) {
+}: FeedbackTypes) {
   try {
-    const prompt = `Generate a 140 words description about : ${type} and must be maximum of 100 characters for each sentence, please don't use "" inside the sentence.`;
+    const prompt = `Provide a solution for the following feedback. Type: ${type}. Subject: ${subject}. Feedback: ${feedback}. Keep the response concise and clear. Ensure each sentence is no longer than 100 characters and avoid using quotation marks within sentences.`;
+
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [

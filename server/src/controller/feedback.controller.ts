@@ -1,11 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { feedbackFormSchema } from "../types";
-
-type Feedback = {
-  type: string;
-  subject: string;
-  feedback: string;
-};
+import { feedbackFormSchema, FeedbackTypes } from "../types";
+import { getAIFeedback } from "../services/feedback.service";
 
 export async function getFeedback(
   req: Request,
@@ -13,7 +8,7 @@ export async function getFeedback(
   next: NextFunction
 ) {
   try {
-    const feedback: Feedback = req.body;
+    const feedback: FeedbackTypes = req.body;
 
     // validate incoming feedback request
     const isValidBody = feedbackFormSchema.safeParse(feedback);
@@ -25,8 +20,11 @@ export async function getFeedback(
       });
       return;
     }
-    console.log(feedback)
-    res.status(200).json(feedback)
+    const aiFeedback = await getAIFeedback(feedback);
+    res.status(200).json({
+      success: true,
+      data: aiFeedback
+    })
   } catch (error) {
     next(error);
   }
