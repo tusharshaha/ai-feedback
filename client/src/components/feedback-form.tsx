@@ -38,7 +38,7 @@ const FeedbackForm = () => {
     defaultValues: {
       subject: '',
       feedback: "",
-      type: "bug"
+      type: undefined
     }
   });
 

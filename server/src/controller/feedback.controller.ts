@@ -44,9 +44,8 @@ export async function getFeedback(
     if (feedback.type === "bug") {
       const aiFeedback = await getAIFeedback(feedback);
       const data = {
-        type: feedback.type,
-        subject: feedback.subject,
-        solution: aiFeedback,
+        ...feedback,
+        feedback: aiFeedback,
       };
       await Feedback.create(data);
       res.status(200).json({
