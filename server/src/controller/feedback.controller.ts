@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { feedbackSchema, FeedbackTypes } from "../types";
 import { getAIFeedback } from "../services/feedback.service";
-import Feedback from "../../model/feedback.model";
+import Feedback from "../model/feedback.model";
 
 export async function getAllFeedback(
   req: Request,

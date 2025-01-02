@@ -52,9 +52,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllFeedback = getAllFeedback;
 exports.getFeedback = getFeedback;
+exports.deleteOneFeedback = deleteOneFeedback;
 var types_1 = require("../types");
 var feedback_service_1 = require("../services/feedback.service");
-var feedback_model_1 = __importDefault(require("../../model/feedback.model"));
+var feedback_model_1 = __importDefault(require("../model/feedback.model"));
 function getAllFeedback(req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var _a, limit, skip, data, error_1;
@@ -127,6 +128,31 @@ function getFeedback(req, res, next) {
                     next(error_2);
                     return [3 /*break*/, 7];
                 case 7: return [2 /*return*/];
+            }
+        });
+    });
+}
+function deleteOneFeedback(req, res, next) {
+    return __awaiter(this, void 0, void 0, function () {
+        var id, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    id = req.params.id;
+                    return [4 /*yield*/, feedback_model_1.default.findByIdAndDelete(id)];
+                case 1:
+                    _a.sent();
+                    res.status(200).json({
+                        success: true,
+                        message: "Feedback deleted successfully"
+                    });
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_3 = _a.sent();
+                    next(error_3);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
